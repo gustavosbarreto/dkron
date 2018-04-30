@@ -223,6 +223,11 @@ definitions:
           description: "String representing a environment variable, in the form 'key=value'."
         description: "Extra environment variables to be passed to the process."
         readOnly: false
+      payload:
+        type: string
+        format: byte
+        description: "Payload to pass to command through STDIN"
+        readOnly: false
       shell:
         type: boolean
         description: "Use shell to run the command"

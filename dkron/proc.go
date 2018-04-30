@@ -35,7 +35,17 @@ func (a *AgentCommand) invokeJob(job *Job, execution *Execution) error {
 		log.Warnf("proc: Script '%s' slow, execution exceeding %v", job.Command, 2*time.Hour)
 	})
 
-	err := cmd.Start()
+	stdin, err := cmd.StdinPipe()
+	if err != nil {
+		return err
+	}
+
+	defer stdin.Close()
+
+	err = cmd.Start()
+
+	stdin.Write(job.Payload)
+	stdin.Close()
 
 	// Warn if buffer is overritten
 	if output.TotalWritten() > output.Size() {

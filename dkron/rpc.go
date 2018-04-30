@@ -36,6 +36,7 @@ func (rpcs *RPCServer) GetJob(jobName string, job *Job) error {
 	// Copy the data structure
 	job.Shell = j.Shell
 	job.EnvironmentVariables = j.EnvironmentVariables
+	job.Payload = j.Payload
 	job.Command = j.Command
 
 	return nil

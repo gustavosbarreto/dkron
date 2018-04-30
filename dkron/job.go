@@ -58,6 +58,9 @@ type Job struct {
 	// Extra environment variable to give to the command to execute.
 	EnvironmentVariables []string `json:"environment_variables"`
 
+	// Payload to pass to command through STDIN.
+	Payload []byte `json:"payload"`
+
 	// Owner of the job.
 	Owner string `json:"owner"`
 
